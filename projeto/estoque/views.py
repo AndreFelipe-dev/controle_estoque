@@ -1,26 +1,59 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,loader
 
-# Create your views here.
+from .forms import CadastroForm
+from .models import Produto
+#Dentro da views é onde declaramos todas as regras de negócio do sistema
 
 def home(request):
 
-    return HttpResponse('<h1> Página inicial do projeto</h1>')
-
-pass
+    templates=loader.get_template(('estoque/home.html'))
+    return HttpResponse(templates.render())
 
 
 def cadastro (request):
-    return HttpResponse('<h1> Página de cadastro do projeto</h1>')
+    form = CadastroForm()
 
-pass
+    return render(request, 'estoque/cadastro.html', {'form': form})
+
 
 
 def lista (request):
-    return HttpResponse('<h1> Página de lista do projeto</h1>')
+    return render(request, 'estoque/lista.html')
 
-pass
+    pass
 
 def busca(request):
-    return HttpResponse('<h1> Página de busca do projeto</h1>')
+    return render(request, 'estoque/busca.html')
 
-pass
+    pass
+
+def cadastrar(request):
+
+    try:
+        if request.method == 'POST':
+            form = CadastroForm(request.Post)
+            if form.is_valid():
+                #CADASTRAR O PRODUTO
+                produto = Produto()
+                produto.nome = form.cleaned_data['nome']
+                produto.preco = form.cleaned_data['preco']
+                produto.quantidade = form.cleaned_data['quantidade']
+
+                produto.save()
+
+                msg = 'Produto cadastradado com sucesso '
+                return render(request, 'estoque/cadastro.html', {'form': CadastroForm(), 'msg': msg})
+
+            else:msg= form.errors
+            return render(request,' estoque/cadastro.html', {'form': form, 'msg': msg})
+
+        else:
+            raise Exception('MethodEnvioError,Use POST para formulário')
+
+    except Exception as ex:
+        msg = ex.args
+        return render(request, 'estoque/cadastro.html', {'form': CadastroForm(), 'msg': msg})
+
+
+    pass
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicação de controle e estoque</title>
+</head>
+<body>
+
+<h3> Controle de estoque </h3>
+
+<hr/>
+<p>Utilize o formulário abaixo para efetuar o cadastro</p>
+
+<form method="POST" , action=" {%  url'estoque: cadastrar' %}" >
+
+    {% csrf_token %}
+
+    {{ form.nome.label }}
+    {{ form.nome}}
+    <br/>
+    <br/>
+    {{ form.preco.label }}
+    {{ form.preco}}
+    <br/>
+    <br/>
+    {{ form.quantidade.label }}
+    {{ form.quantidade}}
+    <br/>
+    <br/>
+
+    <input type="submit"value="Cadastrar">
+
+
+</form>
+
+{% if msg %} {{ msg }} {% endif %}
+
+</body>
+</html>

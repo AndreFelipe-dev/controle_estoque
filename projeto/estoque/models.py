@@ -4,7 +4,7 @@ class Produto(models.Model): #Mapeamento da classe como tabela
 
 
     codigo= models.AutoField (primary_key=True) #chave primária
-    nome= models.CharField(max_length=(100 ),null=False)  #null false = Não pode ser nulo
+    nome= models.CharField(max_length=(100 ),null=False)  #null false == Não pode ser nulo
     preco =models.FloatField(null=False)
     quantidade = models.IntegerField(null=False)
 
