@@ -11,7 +11,7 @@
 <hr/>
 <p>Utilize o formulário abaixo para efetuar o cadastro</p>
 
-<form method="POST" , action=" {%  url'estoque: cadastrar' %}" >
+<form method="POST" action="{% url 'estoque:cadastrar' %}">
 
     {% csrf_token %}
 

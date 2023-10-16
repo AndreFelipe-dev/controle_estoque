@@ -6,11 +6,11 @@ from .models import Produto
 
 def home(request):
 
-    templates=loader.get_template(('estoque/home.html'))
+    templates = loader.get_template('estoque/home.html')
     return HttpResponse(templates.render())
 
 
-def cadastro (request):
+def cadastro(request):
     form = CadastroForm()
 
     return render(request, 'estoque/cadastro.html', {'form': form})
@@ -31,7 +31,7 @@ def cadastrar(request):
 
     try:
         if request.method == 'POST':
-            form = CadastroForm(request.Post)
+            form = CadastroForm(request.POST)
             if form.is_valid():
                 #CADASTRAR O PRODUTO
                 produto = Produto()
