@@ -18,7 +18,9 @@ def cadastro(request):
 
 
 def lista (request):
-    return render(request, 'estoque/lista.html')
+    #SELECT * FROM
+    produtos = Produto.objects.all()
+    return render(request, 'estoque/lista.html', { 'produtos' : produtos})
 
     pass
 
@@ -39,6 +41,10 @@ def cadastrar(request):
                 produto.preco = form.cleaned_data['preco']
                 produto.quantidade = form.cleaned_data['quantidade']
 
+                if form.cleaned_data['codigo'] is not None:
+                    produto.codigo = form.cleaned_data['codigo']
+                    print(produto.codigo)
+
                 produto.save()
 
                 msg = 'Produto cadastradado com sucesso '
@@ -57,3 +63,45 @@ def cadastrar(request):
 
     pass
 
+
+def excluir(request,codigo):
+
+    try:
+        produto = Produto.objects.get(pk=codigo)
+        result = produto.delete()
+        if result[0] > 0:
+            msg = 'Produto deletado com sucesso '
+
+        else:
+            msg = 'Produto não encontrado'
+
+        produtos = Produto.objects.all()
+        return render(request, 'estoque/lista.html', {'produtos': produtos, 'msg': msg })
+
+
+    except Exception as ex:
+        produtos = Produto.objetcs.all()
+        msg= ex.args
+        return render(request, 'estoque/lista.html', { 'produtos': produtos, 'msg': msg})
+    pass
+
+def alterar(request,codigo):
+    try:
+        produto = Produto.objects.get(pk=codigo)
+        form = CadastroForm(initial={
+            'codigo': produto.codigo,
+            'nome' : produto.nome,
+            'preco': produto.preco,
+            'quantidade': produto.quantidade,
+        })
+
+
+
+        return render(request, 'estoque/cadastro.html', {'form': form})
+
+
+    except Exception as ex:
+        produtos = Produto.objetcs.all()
+        msg = ex.args
+        return render(request, 'estoque/lista.html', {'produtos': produtos, 'msg': msg})
+    pass

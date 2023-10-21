@@ -11,10 +11,49 @@
 <hr/>
 <p>Listagem de produtos </p>
 
+{% if produtos or produtos|length > 0 %}
+
+<table width="100%" border="1px" >
+    <thead>
+    <tr>
+        <th> Código </th>
+        <th> Nome </th>
+        <th> Preço </th>
+        <th> Quantidade </th>
+        <th> Operações </th>
+    </tr>
+    </thead>
+    <tbody>
+
+     {% for p in  produtos%}
+
+<tr align="center">
+
+     <td>{{ p.codigo }}</td>
+     <td>{{ p.nome }}</td>
+     <td>{{ p.preco }}</td>
+     <td>{{ p.quantidade }}</td>
+     <td><a href="{% url 'estoque:excluir' codigo=p.codigo %}"
+            onclick=" return window.confirm('Deseja realmente excluir?')"> Excluir </a>|
+         <a href="{% url 'estoque:alterar' codigo=p.codigo %}"> Atualizar</a></td>
+
+</tr>
+
+
+    {% endfor %}
+
+    </tbody>
+
+    {% if msg %} {{ msg }} {% endif %}
 
 
 
 
+</table>
+{% else %}
 
+ <p>Não há produtos cadastrados.</p>
+
+{% endif %}
 </body>
 </html>

@@ -20,5 +20,8 @@ urlpatterns =[
     #     URL(HTML)    (função do views)     (referência :name)
     path('Cadastrar/', views.cadastrar, name='cadastrar'),
 
+    path('Excluir/<int:codigo>', views.excluir, name= 'excluir'),
+    path('Alterar/<int:codigo>', views.alterar, name= 'alterar'),
+
 ]
 
