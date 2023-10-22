@@ -22,6 +22,10 @@ urlpatterns =[
 
     path('Excluir/<int:codigo>', views.excluir, name= 'excluir'),
     path('Alterar/<int:codigo>', views.alterar, name= 'alterar'),
+    path('Busca/enviar_post/', views.pesquisar, name='pesquisar'),
+
+
+
 
 ]
 

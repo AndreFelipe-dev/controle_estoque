@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'estoque/css/estilo.css'%}">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+
+    <title>Página inicial da aplicação</title>
+
+</head>
+<body>
+{% include 'estoque/header.html' %}
+
+{% block main_content%}
+
+
+{% endblock %}
+
+
+{% include 'estoque/footer.html' %}
+</body>
+</html>

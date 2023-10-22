@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aplicação de controle e estoque</title>
-</head>
-<body>
+{% extends 'estoque/base.html' %}
+{% load static  %}
 
-<h3> Controle de estoque </h3>
+{% block main_content %}
 
-<hr/>
-<p>Utilize o formulário abaixo para efetuar sua pesquisa </p>
 
-<form method="POST" action="#"></form>
- <input type="text" name="nome">
- <input type="submit" name="Pesquisar">
-</body>
-</html>
+<p> Utilize o formulário  abaixo para efetuar sua pesquisa.</p>
+
+<form method="POST" action="#" id="form">
+
+        {% csrf_token %}
+
+        <input type="text" name="nome"  id="nome"/>
+        <input type="submit" value="Pesquisar"  />
+
+</form>
+
+<div id="saida"></div>
+
+<script src="{% static 'estoque/js/main.js' %}"></script>
+
+{% endblock %}

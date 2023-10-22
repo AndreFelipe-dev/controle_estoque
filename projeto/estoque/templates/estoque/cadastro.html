@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aplicação de controle e estoque</title>
-</head>
-<body>
+{% extends 'estoque/base.html' %}
 
-<h3> Controle de estoque </h3>
+{% block main_content %}
 
-<hr/>
+
+
+
 <p>Utilize o formulário abaixo para efetuar o cadastro</p>
 
 <form method="POST" action="{% url 'estoque:cadastrar' %}">
@@ -37,5 +33,5 @@
 
 {% if msg %} {{ msg }} {% endif %}
 
-</body>
-</html>
+{% endblock %}
+

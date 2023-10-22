@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, HttpResponse,loader
 
 from .forms import CadastroForm
@@ -104,4 +106,38 @@ def alterar(request,codigo):
         produtos = Produto.objetcs.all()
         msg = ex.args
         return render(request, 'estoque/lista.html', {'produtos': produtos, 'msg': msg})
+    pass
+
+
+def pesquisar(request):
+
+    try:
+        if request.method== 'POST':
+            nome = request.POST['nome']
+            produtos = Produto.objects.filter(nome__icontains= nome)
+
+            response = {}
+
+            for indice, produto in enumerate(produtos):
+
+                p= {}
+
+                p ['codigo'] = produto.codigo
+                p ['nome'] = produto.nome
+                p ['preco'] = produto.preco
+                p ['quantidade'] = produto.quantidade
+
+                response[indice]= p
+
+            response['t'] = len(produtos)
+
+            return HttpResponse(json.dumps(response), content_type='application/json')
+
+
+
+
+    except Exception as ex:
+        msg = ex.args
+        return HttpResponse(json.dumps({"msg": msg}), content_type = 'application/json')
+
     pass

@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aplicação de controle e estoque</title>
-</head>
-<body>
-<h3> Controle de estoque </h3>
-<hr/>
-<p>Utilize os links abaixo para efetuar acesso ao sistema</p>
-<ul>
-    <li> <a href="{% url 'estoque:home' %}"> Home</a> </li>
-    <li> <a href="{% url 'estoque:cadastro' %}">Cadastro</a> </li>
-    <li> <a href="{% url 'estoque:lista' %}"> Lista</a> </li>
-    <li> <a href="{% url 'estoque:busca' %}"> Busca</a> </li>
-</ul>
+{% extends 'estoque/base.html' %}
 
+{% block main_content %}
 
-</body>
-</html>
+<p>Página inicial do Sistema</p>
+
+{% endblock %}

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aplicação de controle e estoque</title>
-</head>
-<body>
+
+{% extends 'estoque/base.html' %}
+
+{% block main_content %}
+
+
+
 
 <h3> Controle de estoque </h3>
 
@@ -55,5 +55,6 @@
  <p>Não há produtos cadastrados.</p>
 
 {% endif %}
-</body>
-</html>
+
+{% endblock %}
+
