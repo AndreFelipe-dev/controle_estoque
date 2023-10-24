@@ -6,16 +6,16 @@
 
 
 
-<h3> Controle de estoque </h3>
 
-<hr/>
-<p>Listagem de produtos </p>
+
+
+<p class="fw-bold text-decoration-underline">Listagem de produtos </p>
 
 {% if produtos or produtos|length > 0 %}
 
-<table width="100%" border="1px" >
+<table class="table table-success table-striped table-bordered table-hover">
     <thead>
-    <tr>
+    <tr align="center">
         <th> Código </th>
         <th> Nome </th>
         <th> Preço </th>
@@ -34,8 +34,8 @@
      <td>{{ p.preco }}</td>
      <td>{{ p.quantidade }}</td>
      <td><a href="{% url 'estoque:excluir' codigo=p.codigo %}"
-            onclick=" return window.confirm('Deseja realmente excluir?')"> Excluir </a>|
-         <a href="{% url 'estoque:alterar' codigo=p.codigo %}"> Atualizar</a></td>
+            onclick=" return window.confirm('Deseja realmente excluir?')" class="btn btn-outline-danger"> Excluir </a>
+         <a href="{% url 'estoque:alterar' codigo=p.codigo %}" class="btn btn-outline-success"> Atualizar</a></td>
 
 </tr>
 

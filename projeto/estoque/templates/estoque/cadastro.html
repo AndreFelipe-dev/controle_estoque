@@ -13,20 +13,46 @@
 
     {{ form.codigo }}
 
-    {{ form.nome.label }}
-    {{ form.nome}}
-    <br/>
-    <br/>
-    {{ form.preco.label }}
-    {{ form.preco}}
-    <br/>
-    <br/>
-    {{ form.quantidade.label }}
-    {{ form.quantidade}}
-    <br/>
+    <div class="form-group row" style="margin-botton:10px;">
+        <label class="col-sm-1">
+             {{ form.nome.label }}
+        </label>
+        <div class="col-sm-5">
+            {{ form.nome}}
+        </div>
+
+    </div>
+
+
     <br/>
 
-    <input type="submit"value="Cadastrar">
+    <div class="form-group row" style="margin-botton:10px;">
+        <label class="col-sm-1">
+            {{ form.preco.label }}
+        </label>
+        <div class="col-sm-5">
+            {{ form.preco}}
+        </div>
+
+    </div>
+
+
+    <br/>
+
+    <div class="form-group row" style="margin-botton:10px;">
+        <label class="col-sm-1">
+            {{ form.quantidade.label }}
+        </label>
+        <div class="col-sm-5">
+            {{ form.quantidade}}
+        </div>
+
+    </div>
+
+
+    <br/>
+
+    <input type="submit"value="Cadastrar" class="btn btn-success">
 
 
 </form>
